@@ -1,15 +1,14 @@
 {
   "name": "lecker",
   "version": "0.1.0",
-  "description": "Really simple Spotify client for the Mac",
+  "description": "Really simple -keyboard first- Spotify client for Chrome",
   "main": "index.js",
   "scripts": {
-    "electron": "electron .",
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production"
   },
   "engines": {
-    "node": "10"
+    "node": "12"
   },
   "repository": {
     "type": "git",
@@ -23,13 +22,17 @@
   "homepage": "https://github.com/emiprandi/lecker#readme",
   "devDependencies": {
     "css-loader": "^3.2.0",
+    "file-loader": "^6.0.0",
     "html-webpack-plugin": "^3.2.0",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.1",
     "vue-style-loader": "^4.1.2",
+    "vue-svg-loader": "^0.15.0",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1"
-  }
+  },
+  "dependencies": {},
+  "keywords": []
 }
