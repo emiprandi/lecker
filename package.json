@@ -1,7 +1,7 @@
 {
   "name": "lecker",
   "version": "0.1.0",
-  "description": "Really simple -keyboard first- Spotify client for Chrome",
+  "description": "Really simple -keyboard first- Spotify web client",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development",
