@@ -157,7 +157,6 @@ export default {
     },
     play: function(albumUri, trackUri) {
       this.api.play(albumUri, trackUri);
-      this.currentTrack = trackUri;
       this.playerStatus = playerStatuses.PLAYING;
     },
     pause: function() {
