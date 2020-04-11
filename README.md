@@ -1,4 +1,4 @@
 # lecker
 Really simple Spotify client for the Mac
 
-TBD
+<img src="./docs/screenshot.png">
