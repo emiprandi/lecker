@@ -15,13 +15,27 @@ module.exports = {
           'vue-style-loader',
           'css-loader'
         ]
+      },
+      {
+        test: /\.svg$/,
+        use: 'vue-svg-loader'
+      },
+      {
+        test: /\.png$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            esModule: false,
+          }
+        }
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      hash: true
+      inject: false,
+      favicon: "./src/assets/favicon.png"
     }),
     new VueLoaderPlugin()
   ]
