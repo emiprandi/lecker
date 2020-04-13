@@ -55,7 +55,7 @@
       <div class="card">
         <p>Login with:</p>
         <a
-          href="https://accounts.spotify.com/authorize?response_type=token&client_id=6619b58643b74163b1fbfbc49f2b81b4&scope=streaming%20user-read-email%20user-read-private%20user-read-recently-played&redirect_uri=http://localhost:8080"
+          href="https://accounts.spotify.com/authorize?response_type=token&client_id=6619b58643b74163b1fbfbc49f2b81b4&scope=streaming%20user-read-email%20user-read-private%20user-read-recently-played&redirect_uri=https://lecker.now.sh"
         ><img src="./assets/logo-spotify.png" width="150" /></a>
       </div>
     </div>
