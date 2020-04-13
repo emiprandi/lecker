@@ -1,6 +1,6 @@
 {
   "name": "lecker",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Really simple -keyboard first- Spotify web client",
   "main": "index.js",
   "scripts": {
