@@ -4,6 +4,7 @@
     <input
       ref="searchInput"
       type="text"
+      placeholder="Hit cmd+f to search..."
       maxlength="40"
       v-model="searchTerm"
       @keyup.enter="triggerSearch"
@@ -99,5 +100,8 @@ export default {
     outline: none;
     padding: 0;
     width: 100%;
+  }
+  .search-input input::placeholder {
+    color: #372A8E;
   }
 </style>
