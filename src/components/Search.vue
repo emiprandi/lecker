@@ -1,20 +1,27 @@
 <template>
-  <input
-    id="searchBox"
-    ref="searchInput"
-    type="text"
-    maxlength="40"
-    v-model="searchTerm"
-    @keyup.enter="triggerSearch"
-    @keyup.escape="clearSearch"
-    @focus="focus"
-    @blur="blur"
-  />
+  <div class="search-input">
+    <div class="shortcut"><shortcut-icon /><span>F</span></div>
+    <input
+      ref="searchInput"
+      type="text"
+      maxlength="40"
+      v-model="searchTerm"
+      @keyup.enter="triggerSearch"
+      @keyup.escape="clearSearch"
+      @focus="focus"
+      @blur="blur"
+    />
+  </div>
 </template>
 
 <script>
+import ShortcutIcon from '../assets/cmd-shortcut.svg';
+
 export default {
   name: 'search',
+  components: {
+    'shortcut-icon': ShortcutIcon
+  },
   data() {
     return {
       isTheUserTyping: false,
@@ -29,8 +36,8 @@ export default {
   },
   methods: {
     setKeyListener: function(event) {
-      // listen for the `:` shortcut to focus on input
-      if (!this.isTheUserTyping && event.shiftKey && event.keyCode === 186) {
+      // listen for the `cmd + f` shortcut to focus on input
+      if (!this.isTheUserTyping && event.metaKey && event.keyCode === 70) {
         event.preventDefault();
         setTimeout(() => {
           this.$refs.searchInput.focus();
@@ -62,7 +69,25 @@ export default {
 </script>
 
 <style scoped>
-  #searchBox {
+  .search-input {
+    display: flex;
+    align-items: center;
+  }
+  .search-input .shortcut {
+    flex: 0 0 auto;
+    background: #FFEF66;
+    color: #1A0E6A;
+    border-radius: 5px;
+    padding: 0 5px;
+    display: flex;
+    margin-right: 30px;
+  }
+  .search-input .shortcut span {
+    font-size: 14px;
+    font-weight: 500;
+    width: 8px;
+  }
+  .search-input input {
     font-family: 'Quicksand', sans-serif;
     background: transparent;
     border: none;
