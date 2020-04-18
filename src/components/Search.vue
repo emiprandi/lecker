@@ -35,9 +35,6 @@ export default {
       // listen for the `f` shortcut to focus on input
       if (!this.isTheUserTyping && event.keyCode === 70) {
         event.preventDefault();
-        // setTimeout(() => {
-
-        // }, 50);
         this.$refs.searchInput.focus();
         this.$refs.searchInput.select();
       }
