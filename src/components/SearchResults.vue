@@ -7,7 +7,7 @@
       :key="result.id"
       @click.prevent="$emit('result-selected', result)"
     >
-      <div class="shortcut"><shortcut-icon /><span>{{index + 1}}</span></div>
+      <div class="shortcut">{{index + 1}}</div>
       <div class="image" :style="{ backgroundImage: `url('${result.images[1].url}')` }"></div>
       <div class="info">
         <div class="info-primary">{{result.name}}</div>
@@ -21,13 +21,8 @@
 </template>
 
 <script>
-import ShortcutIcon from '../assets/cmd-shortcut.svg';
-
 export default {
   name: 'search-results',
-  components: {
-    'shortcut-icon': ShortcutIcon
-  },
   props: {
     results: Array
   },
@@ -39,8 +34,8 @@ export default {
   },
   methods: {
     setResultsListener: function(event) {
-      // listen for the `cmd+[1-8]` shortcut to start playing
-      if (this.results.length > 0 && event.metaKey && event.keyCode >= 49 && event.keyCode <= 56) {
+      // listen for the `[1-8]` shortcut to start playing
+      if (this.results.length > 0 && event.keyCode >= 49 && event.keyCode <= 56) {
         event.preventDefault();
         this.$emit('result-selected', this.results[event.keyCode - 49]);
       }
@@ -67,18 +62,16 @@ export default {
     margin-bottom: 30px;
   }
   .search-result .shortcut {
-    flex: 0 0 auto;
+    flex: 0 0 8px;
+    min-width: 8px;
     background: #FFEF66;
     color: #1A0E6A;
-    border-radius: 5px;
-    padding: 0 5px;
-    display: flex;
-    margin-right: 30px;
-  }
-  .search-result .shortcut span {
     font-size: 14px;
     font-weight: 500;
-    width: 8px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 0 5px;
+    margin-right: 30px;
   }
   .search-result .image {
     flex: 0 0 60px;
