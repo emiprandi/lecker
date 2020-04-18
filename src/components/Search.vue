@@ -1,10 +1,10 @@
 <template>
   <div class="search-input">
-    <div class="shortcut"><shortcut-icon /><span>F</span></div>
+    <div class="shortcut">F</div>
     <input
       ref="searchInput"
       type="text"
-      placeholder="Hit cmd+f to search..."
+      placeholder="Hit F key to search..."
       maxlength="40"
       v-model="searchTerm"
       @keyup.enter="triggerSearch"
@@ -16,13 +16,8 @@
 </template>
 
 <script>
-import ShortcutIcon from '../assets/cmd-shortcut.svg';
-
 export default {
   name: 'search',
-  components: {
-    'shortcut-icon': ShortcutIcon
-  },
   data() {
     return {
       isTheUserTyping: false,
@@ -37,13 +32,14 @@ export default {
   },
   methods: {
     setKeyListener: function(event) {
-      // listen for the `cmd + f` shortcut to focus on input
-      if (!this.isTheUserTyping && event.metaKey && event.keyCode === 70) {
+      // listen for the `f` shortcut to focus on input
+      if (!this.isTheUserTyping && event.keyCode === 70) {
         event.preventDefault();
-        setTimeout(() => {
-          this.$refs.searchInput.focus();
-          this.$refs.searchInput.select();
-        }, 50);
+        // setTimeout(() => {
+
+        // }, 50);
+        this.$refs.searchInput.focus();
+        this.$refs.searchInput.select();
       }
     },
     triggerSearch: function() {
@@ -75,18 +71,16 @@ export default {
     align-items: center;
   }
   .search-input .shortcut {
-    flex: 0 0 auto;
+    flex: 0 0 8px;
+    min-width: 8px;
     background: #FFEF66;
     color: #1A0E6A;
-    border-radius: 5px;
-    padding: 0 5px;
-    display: flex;
-    margin-right: 30px;
-  }
-  .search-input .shortcut span {
     font-size: 14px;
     font-weight: 500;
-    width: 8px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 0 5px;
+    margin-right: 30px;
   }
   .search-input input {
     font-family: 'Quicksand', sans-serif;
