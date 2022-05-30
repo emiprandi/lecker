@@ -1,0 +1,11 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #1A0E6A;
+  color: #E8B3F0;
+  font-family: 'Quicksand', sans-serif;
+  height: 100vh;
+}
