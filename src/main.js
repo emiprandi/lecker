@@ -1,6 +1,6 @@
-import Lecker from './Lecker.svelte';
+import Main from './Main.svelte';
 
-const app = new Lecker({
+const app = new Main({
 	target: document.body,
 	props: {}
 });
