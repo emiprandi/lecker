@@ -10,4 +10,6 @@ auth.subscribe((value) => {
   }
 });
 
-export const user = writable();
+export const user = writable({});
+
+export const device = writable('');
