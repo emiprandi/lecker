@@ -13,10 +13,6 @@
   }
 </script>
 
-<pre>
-  State: {$appState}
-</pre>
-
 {#if $appState === 'init'}
   <div>Init!</div>
 {:else if $appState === 'login'}
