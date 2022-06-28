@@ -2,7 +2,7 @@
   import { APP_ID } from '../config';
   import Shortcut from '../components/Shortcut.svelte';
 
-  const handleLoginShortcut = (e) => {
+  const handleKeystrokes = (e) => {
     switch (e.code) {
       case 'KeyA':
       case 'Enter':
@@ -30,7 +30,7 @@
   };
 </script>
 
-<svelte:window on:keydown={handleLoginShortcut}/>
+<svelte:window on:keydown={handleKeystrokes}/>
 
 <div class="container">
   <div class="card">
