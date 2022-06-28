@@ -5,7 +5,6 @@ html, body {
 
 body {
   background: rgb(26,14,106);
-  /* background: linear-gradient(225deg, rgba(26,14,106,1) 0%, rgba(14,6,68,1) 100%); */
   color: #E8B3F0;
   font-family: 'Quicksand', sans-serif;
   height: 100vh;
