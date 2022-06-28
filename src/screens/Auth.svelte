@@ -23,7 +23,3 @@
     }
   });
 </script>
-
-<div>
-  {JSON.stringify($auth, null, '\t')}
-</div>

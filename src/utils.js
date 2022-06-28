@@ -26,3 +26,12 @@ export const getSavedSession = () => {
 export const saveSession = (data) => {
   storage.set(LOCALSTORE_KEY, JSON.stringify(data));
 };
+
+export const msToMinutes = (ms) => {
+  const date = new Date(ms);
+  return `${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`;
+};
+
+export const getImageUrlBySize = (images, size) => {
+  return images.find((image) => image.width === size).url;
+};

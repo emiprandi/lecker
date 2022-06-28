@@ -13,14 +13,10 @@
   }
 </script>
 
-{#if $appState === 'init'}
-  <div>Init!</div>
-{:else if $appState === 'login'}
+{#if $appState === 'login'}
   <Login />
 {:else if $appState === 'auth'}
   <Auth />
 {:else if $appState === 'player'}
   <Player />
-{:else if $appState === 'loading'}
-  <div>LOADING!</div>
 {/if}
