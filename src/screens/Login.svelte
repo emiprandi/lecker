@@ -2,6 +2,12 @@
   import { APP_ID } from '../config';
   import Shortcut from '../components/Shortcut.svelte';
 
+  const githubLink = 'https://github.com/emiprandi/lecker';
+  const twitterLink = 'https://twitter.com/sucufruli';
+
+  let showGithubLinkFallback = false;
+  let showTwitterLinkFallback = false;
+
   const handleKeystrokes = (e) => {
     switch (e.code) {
       case 'KeyA':
@@ -19,12 +25,14 @@
 
       case 'KeyG':
         e.preventDefault();
-        window.open('https://github.com/emiprandi/lecker');
+        window.open(githubLink);
+        showGithubLinkFallback = true;
         break;
 
       case 'KeyS':
         e.preventDefault();
-        window.open('https://twitter.com/sucufruli');
+        window.open(twitterLink);
+        showTwitterLinkFallback = true;
         break;
     }
   };
@@ -63,10 +71,17 @@
     <p class="body-secondary">
       Source code available on <strong>Github</strong> <Shortcut key='G' />
     </p>
+    {#if showGithubLinkFallback}
+      <a href={githubLink} target="_blank">{githubLink}</a>
+    {/if}
+
 
     <p class="body-secondary">
-      Made for fun by @sucufruli <Shortcut key='S' />
+      Made for fun by <strong>@sucufruli</strong> <Shortcut key='S' />
     </p>
+    {#if showTwitterLinkFallback}
+      <a href={twitterLink} target="_blank">{twitterLink}</a>
+    {/if}
   </div>
 </div>
 
@@ -114,6 +129,15 @@
   p.body-secondary {
     color: #6154bd;
     margin-bottom: 10px;
+  }
+
+  a {
+    color: #948bd1;
+    padding: 0 10px;
+    margin-top: -5px;
+    display: block;
+    margin-bottom: 25px;
+    font-size: 14px;
   }
 
   i {
