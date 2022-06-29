@@ -35,3 +35,9 @@ export const msToMinutes = (ms) => {
 export const getImageUrlBySize = (images, size) => {
   return images.find((image) => image.width === size).url;
 };
+
+export const getSongProgressPorcentage = (currentPosition, totalDuration) => {
+  const progress = currentPosition * 100 / totalDuration;
+
+  return progress > 100 ? 100 : progress;
+};

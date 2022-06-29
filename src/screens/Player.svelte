@@ -2,6 +2,7 @@
   import { onDestroy } from 'svelte';
   import { auth, device, searchResults, nowPlaying, progressBar } from '../stores';
   import { play } from '../api/spotify';
+  import { getSongProgressPorcentage } from '../utils';
 
   import Header from '../components/Header.svelte';
   import SearchResults from '../components/SearchResults.svelte';
@@ -26,14 +27,14 @@
       progressInterval = setInterval(async () => {
         const state = await player.getCurrentState();
         if (state) {
-          $progressBar = state.position * 100 / state.duration;
+          $progressBar = getSongProgressPorcentage(state.position, state.duration);
         }
       }, 1000);
     });
 
     player.addListener('player_state_changed', async (state) => {
       if (state && state.track_window && state.track_window.current_track) {
-        $progressBar = state.position * 100 / state.duration;
+        $progressBar = getSongProgressPorcentage(state.position, state.duration);
         $nowPlaying = {
           context: state.context.metadata,
           track: state.track_window.current_track
