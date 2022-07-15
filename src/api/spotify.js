@@ -1,5 +1,5 @@
 import { get } from 'svelte/store';
-import { auth, device } from '../stores';
+import { appState, auth, device } from '../stores';
 
 const req = async (endpoint, qs = {}, options = {}) => {
   const BASE_URL = 'https://api.spotify.com/v1/';
@@ -14,9 +14,16 @@ const req = async (endpoint, qs = {}, options = {}) => {
   url.search = new URLSearchParams(qs).toString();
 
   const response = await fetch(url, options);
+
+  if (response.status === 401) {
+    appState.set('auth');
+    return '';
+  }
+
   if (response.status === 202 || response.status === 204) {
     return '';
   }
+
   return await response.json();
 };
 
@@ -24,7 +31,7 @@ export const search = async (query) => {
   return await req('search', {
     q: query,
     type: 'album',
-    limit: 5
+    limit: 15
   });
 };
 

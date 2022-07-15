@@ -1,6 +1,6 @@
 <script>
   import { search } from '../api/spotify';
-  import { searchResults } from '../stores';
+  import { searchResults, searchPaginationCurrentPage } from '../stores';
 
   import Shortcut from './Shortcut.svelte';
 
@@ -12,6 +12,7 @@
       e.target.blur();
       const { albums: { items } } = await search(searchQuery.trim());
       $searchResults = items;
+      $searchPaginationCurrentPage = 0;
     }
   };
 

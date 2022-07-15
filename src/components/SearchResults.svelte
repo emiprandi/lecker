@@ -1,19 +1,21 @@
 <script>
-  import { searchResults } from '../stores';
+  import { searchResults, searchPaginationCurrentPage } from '../stores';
   import { getImageUrlBySize } from '../utils';
 
   import Shortcut from './Shortcut.svelte';
+
+  export let resultsPerPage;
 </script>
 
-{#each $searchResults as result, i}
+{#each {length: resultsPerPage} as _, i}
   <div class="result">
     <Shortcut key={i + 1} />
-    <div class="image" style="background-image: url({getImageUrlBySize(result.images, 300)})"></div>
+    <div class="image" style="background-image: url({getImageUrlBySize($searchResults[$searchPaginationCurrentPage * resultsPerPage + i].images, 300)})"/>
     <div class="info">
-      <div class="info-primary">{result.name}</div>
+      <div class="info-primary">{$searchResults[$searchPaginationCurrentPage * resultsPerPage + i].name}</div>
       <div class="info-secondary">
-        <div class="artists">{result.artists.map((artist) => artist.name).join(', ')}</div>
-        <div class="tracks">{result.total_tracks} track{result.total_tracks > 1 ? 's' : ''}</div>
+        <div class="artists">{$searchResults[$searchPaginationCurrentPage * resultsPerPage + i].artists.map((artist) => artist.name).join(', ')}</div>
+        <div class="tracks">{$searchResults[$searchPaginationCurrentPage * resultsPerPage + i].total_tracks} track{$searchResults[$searchPaginationCurrentPage * resultsPerPage + i].total_tracks > 1 ? 's' : ''}</div>
       </div>
     </div>
   </div>
@@ -46,7 +48,7 @@
   }
   .info-primary {
     font-size: 18px;
-    line-height: 22px;
+    line-height: 20px;
     font-weight: 700;
     color: #E8B3F0;
     margin-bottom: 5px;

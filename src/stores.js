@@ -14,6 +14,8 @@ export const device = writable('');
 
 export const searchResults = writable([]);
 
+export const searchPaginationCurrentPage = writable(0);
+
 export const nowPlaying = writable();
 
 export const progressBar = writable(0);
